@@ -15,3 +15,26 @@
 2.在BaseActivity里面动态判断那些界面需要悬浮窗口，那些界面不需要悬浮窗口， 动态设置布局
 3.在onResume()，onPause()，onBackPressed()根据业务需求，动态判断什么时候需要结束隐藏显示浮动窗口
 ```
+```
+ @Override
+    public void setContentView(@LayoutRes int layoutResID) {
+
+        // 根部布局
+        activityRoot = new FloatLayout(getApplicationContext());
+
+        // 资源布局
+        View customView = View.inflate(getApplicationContext(), layoutResID, null);
+        activityRoot.addView(customView, 0);
+
+        super.setContentView(activityRoot);
+
+        // 小窗视频
+        if (null != activityRoot) {
+            FloatSub floatSub = activityRoot.getFloatSub();
+            if (!isFloatSubLis && null != floatSub && floatSub.getVisibility() == View.VISIBLE) {
+                isFloatSubLis = true;
+                setOnFloatSubClickListener(this);
+            }
+        }
+    }
+```
