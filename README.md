@@ -17,24 +17,24 @@
 ```
 ```
  @Override
-    public void setContentView(@LayoutRes int layoutResID) {
+ public void setContentView(@LayoutRes int layoutResID) {
 
-        // 根部布局
-        activityRoot = new FloatLayout(getApplicationContext());
+     // 根部布局
+     activityRoot = new FloatLayout(getApplicationContext());
 
-        // 资源布局
-        View customView = View.inflate(getApplicationContext(), layoutResID, null);
-        activityRoot.addView(customView, 0);
+     // 资源布局
+     View customView = View.inflate(getApplicationContext(), layoutResID, null);
+     activityRoot.addView(customView, 0);
 
-        super.setContentView(activityRoot);
+     super.setContentView(activityRoot);
 
-        // 小窗视频
-        if (null != activityRoot) {
-            FloatSub floatSub = activityRoot.getFloatSub();
-            if (!isFloatSubLis && null != floatSub && floatSub.getVisibility() == View.VISIBLE) {
-                isFloatSubLis = true;
-                setOnFloatSubClickListener(this);
-            }
-        }
-    }
+     // 小窗视频
+     if (null != activityRoot) {
+         FloatSub floatSub = activityRoot.getFloatSub();
+         if (!isFloatSubLis && null != floatSub && floatSub.getVisibility() == View.VISIBLE) {
+             isFloatSubLis = true;
+             setOnFloatSubClickListener(this);
+         }
+     }
+}
 ```
